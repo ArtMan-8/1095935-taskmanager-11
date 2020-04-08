@@ -9,9 +9,12 @@ import {createSortingTemplate} from "./components/sorting.js";
 import {generateTasks} from "./mock/task";
 import {generateFilters} from "./mock/filter";
 
-const TASK_COUNT = 20;
-const SHOWING_TASKS_COUNT_ON_START = 8;
-const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
+
+const TaskCount = {
+  ALL: 20,
+  SHOWING_ON_START: 8,
+  SHOWING_BY_BUTTON: 8,
+};
 
 const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
@@ -20,8 +23,8 @@ const render = (container, template, place = `beforeend`) => {
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
+const tasks = generateTasks(TaskCount.ALL);
 const filters = generateFilters();
-const tasks = generateTasks(TASK_COUNT);
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate(filters));
@@ -33,7 +36,7 @@ const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(boardElement, createSortingTemplate(), `afterbegin`);
 render(taskListElement, createTaskEditTemplate(tasks[0]));
 
-let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
+let showingTasksCount = TaskCount.SHOWING_ON_START;
 
 tasks
   .slice(1, showingTasksCount)
@@ -45,7 +48,7 @@ const loadMoreButton = boardElement.querySelector(`.load-more`);
 
 loadMoreButton.addEventListener(`click`, () => {
   const prevTasksCount = showingTasksCount;
-  showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
+  showingTasksCount = showingTasksCount + TaskCount.SHOWING_BY_BUTTON;
 
   tasks
     .slice(prevTasksCount, showingTasksCount)
