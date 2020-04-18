@@ -2,15 +2,15 @@ import {generateTasks} from "./mock/task";
 import {generateFilters} from "./mock/filter";
 import {renderComponent, RenderPosition} from "./utils/render";
 
-import {BoardComponent} from "./components/board";
-import {FilterComponent} from "./components/filter";
-import {LoadMoreButtonComponent} from "./components/load-more-button";
-import {TaskEditComponent} from "./components/task-edit";
-import {TasksComponent} from "./components/tasks";
-import {TaskComponent} from "./components/task";
-import {NoTasksComponent} from "./components/no-task";
-import {SiteMenuComponent} from "./components/site-menu";
-import {SortComponent} from "./components/sorting";
+import BoardComponent from "./components/board";
+import FilterComponent from "./components/filter";
+import LoadMoreButtonComponent from "./components/load-more-button";
+import TaskEditComponent from "./components/task-edit";
+import TasksComponent from "./components/tasks";
+import TaskComponent from "./components/task";
+import NoTasksComponent from "./components/no-task";
+import SiteMenuComponent from "./components/site-menu";
+import SortComponent from "./components/sorting";
 
 const TaskCount = {
   ALL: 20,

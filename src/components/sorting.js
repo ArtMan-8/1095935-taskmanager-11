@@ -10,7 +10,7 @@ const createSortingTemplate = () => {
   );
 };
 
-export class SortComponent {
+export default class SortComponent {
   constructor() {
     this._element = null;
   }

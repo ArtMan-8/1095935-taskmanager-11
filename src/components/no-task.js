@@ -8,7 +8,7 @@ const createNoTasksTemplate = () => {
   );
 };
 
-export class NoTasksComponent {
+export default class NoTasksComponent {
   constructor() {
     this._element = null;
   }
