@@ -1,3 +1,9 @@
+export const TaskCount = {
+  ALL: 20,
+  SHOWING_ON_START: 8,
+  SHOWING_BY_BUTTON: 8,
+};
+
 export const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
 
 export const DAYS = [`mo`, `tu`, `we`, `th`, `fr`, `sa`, `su`];
