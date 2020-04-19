@@ -13,15 +13,15 @@ export const createElement = (template) => {
 export const renderComponent = (container, component, place) => {
   switch (place) {
     case RenderPosition.AFTERBEGIN:
-      container.prepend(component);
+      container.prepend(component.getElement());
       break;
     case RenderPosition.BEFOREEND:
-      container.append(component);
+      container.append(component.getElement());
       break;
   }
 };
 
-export const replace = (newComponent, oldComponent) => {
+export const replaceComponent = (newComponent, oldComponent) => {
   const parentElement = oldComponent.getElement().parentElement;
   const newElement = newComponent.getElement();
   const oldElement = oldComponent.getElement();
