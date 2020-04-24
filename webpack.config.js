@@ -11,5 +11,13 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, `./public`),
     watchContentBase: true,
+  },
+  modules: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   }
 };

@@ -2,6 +2,9 @@ import AbstractSmartComponent from "./abstract-smart-component";
 import {COLORS, DAYS, MONTH_NAMES} from "../utils/const";
 import {formatTime} from "../utils/common";
 
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
+
 const isRepeating = (repeatingDays) => {
   return Object.values(repeatingDays).some(Boolean);
 };
@@ -53,8 +56,7 @@ const createTaskEditTemplate = (task, options = {}) => {
   const {isDateShowing, isRepeatingTask, activeRepeatingDays} = options;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
-  const isBlockSaveButton = (isDateShowing && isRepeatingTask) ||
-    (isRepeatingTask && !isRepeating(activeRepeatingDays));
+  const isBlockSaveButton = (isDateShowing && isRepeatingTask) || (isRepeatingTask && !isRepeating(activeRepeatingDays));
 
   const date = (isDateShowing && dueDate) ? formatDate(dueDate) : ``;
   const time = (isDateShowing && dueDate) ? formatTime(dueDate) : ``;
@@ -92,8 +94,7 @@ const createTaskEditTemplate = (task, options = {}) => {
                   date: <span class="card__date-status">${isDateShowing ? `yes` : `no`}</span>
                 </button>
 
-                ${
-    isDateShowing ? `<fieldset class="card__date-deadline">
+                ${isDateShowing ? `<fieldset class="card__date-deadline">
                       <label class="card__input-deadline-wrap">
                         <input
                           class="card__date"
@@ -109,8 +110,7 @@ const createTaskEditTemplate = (task, options = {}) => {
                   repeat:<span class="card__repeat-status">${isRepeatingTask ? `yes` : `no`}</span>
                 </button>
 
-                  ${
-    isRepeatingTask ? `<fieldset class="card__repeat-days">
+                  ${isRepeatingTask ? `<fieldset class="card__repeat-days">
                         <div class="card__repeat-days-inner">
                           ${repeatingDaysMarkup}
                         </div>
@@ -145,6 +145,9 @@ export default class TaskEditComponent extends AbstractSmartComponent {
     this._activeRepeatingDays = Object.assign({}, task.repeatingDays);
     this._submitHandler = null;
     this._subscribeOnEvents();
+
+    this._flatpickr = null;
+    this._applyFlatpickr();
   }
 
   getTemplate() {
@@ -157,6 +160,8 @@ export default class TaskEditComponent extends AbstractSmartComponent {
 
   rerender() {
     super.rerender();
+
+    this._applyFlatpickr();
   }
 
   reset() {
@@ -174,6 +179,22 @@ export default class TaskEditComponent extends AbstractSmartComponent {
       .addEventListener(`submit`, handler);
 
     this._submitHandler = handler;
+  }
+
+  _applyFlatpickr() {
+    if (this._flatpickr) {
+      this._flatpickr.destroy();
+      this._flatpickr = null;
+    }
+
+    if (this._isDateShowing) {
+      const dateElement = this.getElement().querySelector(`.card__date`);
+      this._flatpickr = flatpickr(dateElement, {
+        altInput: true,
+        allowInput: true,
+        defaultDate: this._task.dueDate || `today`,
+      });
+    }
   }
 
   _subscribeOnEvents() {
