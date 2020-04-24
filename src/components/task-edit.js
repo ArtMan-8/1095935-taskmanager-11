@@ -1,6 +1,6 @@
 import AbstractSmartComponent from "./abstract-smart-component";
 import {COLORS, DAYS, MONTH_NAMES} from "../utils/const";
-import {formatTime} from "../utils/common";
+import {formatDate, formatTime} from "../utils/common";
 
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
