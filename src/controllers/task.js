@@ -4,9 +4,10 @@ import TaskComponent from "../components/task";
 import TaskEditComponent from "../components/task-edit";
 
 export default class TaskController {
-  constructor(container) {
+  constructor(container, onDataChange) {
     this._taskComponent = null;
     this._taskEditComponent = null;
+    this._onDataChange = onDataChange;
     this._container = container;
     this._onEscKeyDown = this._onEscKeyDown.bind(this);
   }
@@ -21,9 +22,15 @@ export default class TaskController {
     });
 
     this._taskComponent.setArchiveButtonClickHandler(() => {
+      this._onDataChange(this, task, Object.assign({}, task, {
+        isArchive: !task.isArchive,
+      }));
     });
 
     this._taskComponent.setFavoritesButtonClickHandler(() => {
+      this._onDataChange(this, task, Object.assign({}, task, {
+        isFavorite: !task.isfavorite,
+      }));
     });
 
     this._taskEditComponent.setSubmitHandler((evt) => {
