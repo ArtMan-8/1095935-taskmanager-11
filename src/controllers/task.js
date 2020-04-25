@@ -1,7 +1,7 @@
 import {RenderPosition, renderComponent, replaceComponent} from "../utils/render";
 
-import TaskComponent from "../components/task";
-import TaskEditComponent from "../components/task-edit";
+import TaskComponent from "../components/board/task/task";
+import TaskEditComponent from "../components/board/task/task-edit";
 
 const Mode = {
   DEFAULT: `default`,

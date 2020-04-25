@@ -1,10 +1,10 @@
 import {SortType, TaskCount} from "../utils/const";
 import {RenderPosition, renderComponent, remove} from "../utils/render";
 
-import NoTasksComponent from "../components/no-task";
-import SortComponent from "../components/sorting";
-import TasksComponent from "../components/tasks";
-import LoadMoreButtonComponent from "../components/load-more-button";
+import NoTasksComponent from "../components/board/task/no-task";
+import SortComponent from "../components/board/sort/sorting";
+import TasksComponent from "../components/board/task/tasks";
+import LoadMoreButtonComponent from "../components/board/load-more-button";
 
 import TaskController from "./task";
 

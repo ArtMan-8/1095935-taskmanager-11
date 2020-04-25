@@ -3,9 +3,9 @@ import {generateFilters} from "./mock/filter";
 import {TaskCount} from "./utils/const";
 import {renderComponent, RenderPosition} from "./utils/render";
 
-import BoardComponent from "./components/board";
-import FilterComponent from "./components/filter";
-import SiteMenuComponent from "./components/site-menu";
+import BoardComponent from "./components/board/board";
+import FilterComponent from "./components/filter/filter";
+import SiteMenuComponent from "./components/control/site-menu";
 import BoardController from "./controllers/board";
 
 

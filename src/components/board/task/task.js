@@ -1,6 +1,6 @@
-import {formatDate, formatTime} from "../utils/common";
+import {formatDate, formatTime} from "../../../utils/common";
 
-import AbstractComponent from "./abstract-component";
+import AbstractComponent from "../../abstract-component";
 
 const createButtonMarkup = (name, isActive = true) => {
   return (

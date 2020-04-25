@@ -1,10 +1,10 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
-import {COLORS, DAYS} from "../utils/const";
-import {formatDate, formatTime} from "../utils/common";
+import {COLORS, DAYS} from "../../../utils/const";
+import {formatDate, formatTime} from "../../../utils/common";
 
-import AbstractSmartComponent from "./abstract-smart-component";
+import AbstractSmartComponent from "../../abstract-smart-component";
 const isRepeating = (repeatingDays) => Object.values(repeatingDays).some(Boolean);
 
 const createColorsMarkup = (colors, currentColor) => {
