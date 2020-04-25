@@ -1,5 +1,5 @@
 export const TaskCount = {
-  ALL: 22,
+  ALL: 20,
   ON_START: 8,
   BY_BUTTON: 8,
 };

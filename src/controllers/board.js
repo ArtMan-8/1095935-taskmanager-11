@@ -69,7 +69,7 @@ export default class BoardController {
     renderComponent(container, this._tasksComponent, RenderPosition.BEFOREEND);
 
     const taskListElement = this._tasksComponent.getElement();
-    const newTasks = renderTasks(taskListElement, this._tasks.slice(0, this._showingTasksCount), this._onDataChange, this._onViewChange);
+    const newTasks = renderTasks(taskListElement, this._tasks.slice(0, this._showingTaskCount), this._onDataChange, this._onViewChange);
 
     this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
     this._renderLoadMoreButton();
@@ -84,16 +84,16 @@ export default class BoardController {
     renderComponent(container, this._loadMoreButtonComponent, RenderPosition.BEFOREEND);
 
     this._loadMoreButtonComponent.setClickHandler(() => {
-      const prevTasksCount = this._showingTasksCount;
+      const prevTasksCount = this._showingTaskCount;
       const taskListElement = this._tasksComponent.getElement();
-      this._showingTasksCount = this._showingTasksCount + TaskCount.BY_BUTTON;
+      this._showingTaskCount = this._showingTaskCount + TaskCount.BY_BUTTON;
 
-      const sortedTasks = getSortedTasks(this._tasks, this._sortComponent.getSortType(), prevTasksCount, this._showingTasksCount);
+      const sortedTasks = getSortedTasks(this._tasks, this._sortComponent.getSortType(), prevTasksCount, this._showingTaskCount);
       const newTasks = renderTasks(taskListElement, sortedTasks, this._onDataChange, this._onViewChange);
 
       this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
 
-      if (this._showingTasksCount >= this._tasks.length) {
+      if (this._showingTaskCount >= this._tasks.length) {
         remove(this._loadMoreButtonComponent);
       }
     });
