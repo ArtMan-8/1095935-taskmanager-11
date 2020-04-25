@@ -1,13 +1,11 @@
-import AbstractSmartComponent from "./abstract-smart-component";
-import {COLORS, DAYS, MONTH_NAMES} from "../utils/const";
-import {formatDate, formatTime} from "../utils/common";
-
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
-const isRepeating = (repeatingDays) => {
-  return Object.values(repeatingDays).some(Boolean);
-};
+import {COLORS, DAYS} from "../utils/const";
+import {formatDate, formatTime} from "../utils/common";
+
+import AbstractSmartComponent from "./abstract-smart-component";
+const isRepeating = (repeatingDays) => Object.values(repeatingDays).some(Boolean);
 
 const createColorsMarkup = (colors, currentColor) => {
   return colors
@@ -158,9 +156,13 @@ export default class TaskEditComponent extends AbstractSmartComponent {
     });
   }
 
+  recoveryListeners() {
+    this.setSubmitHandler(this._submitHandler);
+    this._subscribeOnEvents();
+  }
+
   rerender() {
     super.rerender();
-
     this._applyFlatpickr();
   }
 

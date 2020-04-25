@@ -1,10 +1,10 @@
-import {TaskCount, SortType} from "../utils/const";
-import {renderComponent, RenderPosition, remove} from "../utils/render";
+import {SortType, TaskCount} from "../utils/const";
+import {RenderPosition, renderComponent, remove} from "../utils/render";
 
-import LoadMoreButtonComponent from "../components/load-more-button";
 import NoTasksComponent from "../components/no-task";
 import SortComponent from "../components/sorting";
 import TasksComponent from "../components/tasks";
+import LoadMoreButtonComponent from "../components/load-more-button";
 
 import TaskController from "./task";
 
@@ -40,7 +40,7 @@ export default class BoardController {
     this._container = container;
     this._task = [];
     this._showedTaskControllers = [];
-    this._showingTaskCount = TaskCount.SHOWING_ON_START;
+    this._showingTaskCount = TaskCount.ON_START;
 
     this._noTasksComponent = new NoTasksComponent();
     this._sortComponent = new SortComponent();
@@ -81,12 +81,12 @@ export default class BoardController {
     }
 
     const container = this._container.getElement();
-    renderComponent(container, this._loadMoreButtonComponent);
+    renderComponent(container, this._loadMoreButtonComponent, RenderPosition.BEFOREEND);
 
     this._loadMoreButtonComponent.setClickHandler(() => {
       const prevTasksCount = this._showingTasksCount;
       const taskListElement = this._tasksComponent.getElement();
-      this._showingTasksCount = this._showingTasksCount + TaskCount.SHOWING_BY_BUTTON;
+      this._showingTasksCount = this._showingTasksCount + TaskCount.BY_BUTTON;
 
       const sortedTasks = getSortedTasks(this._tasks, this._sortComponent.getSortType(), prevTasksCount, this._showingTasksCount);
       const newTasks = renderTasks(taskListElement, sortedTasks, this._onDataChange, this._onViewChange);
@@ -115,7 +115,7 @@ export default class BoardController {
   }
 
   _onSortTypeChange(sortType) {
-    this._showingTasksCount = TaskCount.SHOWING_ON_START;
+    this._showingTasksCount = TaskCount.ON_START;
 
     const sortedTasks = getSortedTasks(this._tasks, sortType, 0, this._showingTasksCount);
     const taskListElement = this._tasksComponent.getElement();

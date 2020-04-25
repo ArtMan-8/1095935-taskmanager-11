@@ -1,4 +1,4 @@
-import {renderComponent, RenderPosition, replaceComponent} from "../utils/render";
+import {RenderPosition, renderComponent, replaceComponent} from "../utils/render";
 
 import TaskComponent from "../components/task";
 import TaskEditComponent from "../components/task-edit";
@@ -15,8 +15,8 @@ export default class TaskController {
     this._onDataChange = onDataChange;
     this._onViewChange = onViewChange;
     this._container = container;
-
     this._mode = Mode.DEFAULT;
+
     this._onEscKeyDown = this._onEscKeyDown.bind(this);
   }
 
@@ -40,7 +40,7 @@ export default class TaskController {
 
     this._taskComponent.setFavoritesButtonClickHandler(() => {
       this._onDataChange(this, task, Object.assign({}, task, {
-        isFavorite: !task.isfavorite,
+        isFavorite: !task.isFavorite,
       }));
     });
 

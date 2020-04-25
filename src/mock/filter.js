@@ -1,6 +1,4 @@
-const filterNames = [
-  `all`, `overdue`, `today`, `favorites`, `repeating`, `archive`
-];
+const filterNames = [`all`, `overdue`, `today`, `favorites`, `repeating`, `archive`];
 
 const generateFilters = () => filterNames.map((it) => ({
   name: it,
