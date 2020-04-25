@@ -1,7 +1,7 @@
 export const TaskCount = {
   ALL: 20,
-  SHOWING_ON_START: 8,
-  SHOWING_BY_BUTTON: 8,
+  ON_START: 8,
+  BY_BUTTON: 8,
 };
 
 export const SortType = {
