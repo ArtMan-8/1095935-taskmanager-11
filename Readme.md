@@ -1,4 +1,4 @@
-# Личный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
+# Личный проект «Менеджер задач»
 
 * Студент: [Владимир Артюхов](https://up.htmlacademy.ru/ecmascript/11/user/1095935).
 * Наставник: [Сергей Рубец](https://htmlacademy.ru/profile/amator).
