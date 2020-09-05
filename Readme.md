@@ -1,6 +1,6 @@
 # Курс - JavaScript, уровень 2
 
-## Личный проект «Менеджер задач»
+## Учебный проект «Менеджер задач»
 * Студент: [Владимир Артюхов](https://up.htmlacademy.ru/ecmascript/11/user/1095935).
 * Наставник: [Сергей Рубец](https://htmlacademy.ru/profile/amator).
 
